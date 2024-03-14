@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Nikel - Home</title>
+</head>
+
+<body id="app">
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-whitep">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./assets/images/nikel-logo.png" class="img-fluid" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <div class="d-flex menu ">
+                        <a href="home.html"><button class="btn" type="button">
+                                <i class="bi bi-house-door-fill color_secundary fs-4"></i>
+                            </button>
+                        </a>
+                        <a href="transactions.html"><button class="btn" type="button">
+                                <i class="bi bi-currency-exchange fs-4"></i>
+                            </button>
+                        </a>
+
+                        <div class="dropdown">
+                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle fs-4"></i>
+                            </button>
+                            <ul class="dropdown-menu logout">
+                                <li><button id="logout" class="dropdown-item">Sair</button></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container-lg ">
+            <div class="row">
+                <div class="col d-flex mt-4 justify-content-start align-itens-center">
+                    <i class="bi bi-cash-coin color_primary icon_detail"></i>
+                    <span id="total" class="fs-2">R$ 00,00 </span>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <div class="text-center">
+                        <img src="./assets/images/coins-small.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col shadow-lg info ">
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-6">
+                                <span class="fs-4">
+                                    Entradas <i class="bi bi-arrow-down-circle fs-2 align-middle"></i>
+                                </span>
+                            </div>
+                            <div class="col-6">
+                                <span class="fs-4">
+                                    Saidas <i class="bi bi-arrow-up-circle fs-2 align-middle"></i>
+                                </span>
+                            </div>
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div id="cashInList" class="container p-0">
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div id="cashOutList" class="container p-0">
+
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="button" class="btn m-4 button-default">
+                                    Ver Todas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button data-bs-toggle="modal" data-bs-target="#transaction-modal" class=" btn button-float">
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="transaction-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar lançamento</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="transaction-form">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="value-input" class="form-label">Valor</label>
+                                <input step="any" required type="number" class="form-control" id="value-input"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="description-input" class="form-label">Descrição</label>
+                                <input required type="text" class="form-control" id="description-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="date-input" class="form-label">Data</label>
+                                <input required type="date" class="form-control" id="date-input">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input required class="form-check-input" type="radio" name="type-input"
+                                    id="inlineRadio1" value="1" checked>
+                                <label class="form-check-label" for="inlineRadio1">Entrada</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input required class="form-check-input" type="radio" name="type-input"
+                                    id="inlineRadio2" value="2">
+                                <label class="form-check-label" for="inlineRadio2">Saida</label>
+                            </div>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary button-cancel"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn button-default">Fazer transação</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    <script src="./js/home.js"></script>
+
+</body>
+
+</html>
